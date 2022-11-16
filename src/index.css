@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Sono');
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  
+  font-family: "Sono", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #3f3f3f;
+}
+
