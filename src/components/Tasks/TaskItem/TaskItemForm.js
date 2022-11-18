@@ -4,7 +4,7 @@ import classes from './TaskItemForm.module.css';
 function TaskItemForm (props) {
     return <form className={classes.form}>
         <button> ADD </button>
-        <button> EDIT </button>
+        <button onClick={props.onEdit}> EDIT </button>
     </form>
 }
 

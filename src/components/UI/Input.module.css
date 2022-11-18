@@ -7,10 +7,11 @@
   .input label {
     font-weight: bold;
     margin-right: 1rem;
+    padding-left: 0.5rem;
   }
   
   .input input {
-    width: 3rem;
+    width: 100%;
     border-radius: 5px;
     border: 1px solid #ccc;
     font: inherit;
