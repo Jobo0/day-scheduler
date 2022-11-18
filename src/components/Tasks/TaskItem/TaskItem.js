@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./TaskItem.module.css";
+import TaskItemForm from "./TaskItemForm";
 
 function TaskItem(props) {
   //props.time will be in form 1234 with hours (0-24) and minutes (00-60) 
@@ -12,7 +13,7 @@ function TaskItem(props) {
         <div>{props.description}</div>
         <div className={classes.time}>{hours}:{minutes < 10 ? `0${minutes}` : minutes}</div>
       </div>
-      <div>{}</div>
+      <div><TaskItemForm/></div>
     </li>
   );
 }

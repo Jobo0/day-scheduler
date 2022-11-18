@@ -1,0 +1,22 @@
+.form {
+    text-align: right;
+  }
+  
+  .form button {
+    display:block;
+    margin-bottom: 0.5rem;
+    font: inherit;
+    cursor: pointer;
+    background-color: #0d4083;
+    border: 1px solid #0a0a98;
+    color: white;
+    padding: 0.25rem 2rem;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  
+  .form button:hover,
+  .form button:active {
+    background-color: #248ab6;
+    border-color: #248ab6;
+  }
