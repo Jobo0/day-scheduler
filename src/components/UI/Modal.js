@@ -1,4 +1,5 @@
-import React, { ReactDOM } from "react";
+import React from "react";
+import ReactDOM from 'react-dom';
 import classes from "./Modal.module.css";
 
 function Backdrop(props) {
@@ -15,8 +16,8 @@ function Overlay(props) {
 
 function Modal(props) {
   return <React.Fragment>
-    {ReactDOM.createPortal(<Backdrop/>, document.getElementById('overlay'))}
-    {ReactDOM.createPortal(<Overlay>{props.children}</Overlay>, document.getElementById('overlay'))}
+    {ReactDOM.createPortal(<Backdrop/>, document.getElementById('overlays'))}
+    {ReactDOM.createPortal(<Overlay>{props.children}</Overlay>, document.getElementById('overlays'))}
   </React.Fragment>;
 }
 
