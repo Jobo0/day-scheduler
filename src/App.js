@@ -6,14 +6,18 @@ import Cart from "./components/Cart/Cart";
 function App() {
   const [modalVisible, setModalVisible] = useState(false);
   
-  function cartExitHandler(event) {
+  function cartButtonHandler(event) {
+    setModalVisible(true);
+  }
 
+  function cartExitHandler(event) {
+    setModalVisible(false);
   }
 
   return (
     <React.Fragment>
       {modalVisible ? <Cart onModalExit={cartExitHandler}/> : <React.Fragment/>}
-      <Header />
+      <Header onButtonClick={cartButtonHandler}/>
       <main>
         <Tasks />
       </main>

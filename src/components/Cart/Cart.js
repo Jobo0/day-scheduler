@@ -9,7 +9,7 @@ function Cart(props) {
   const cartContent = (
     <ul>
       {items.map((task) => (
-        <li>{task.name}</li>
+        <li key={task.id}>{task.name}</li>
       ))}
     </ul>
   );
