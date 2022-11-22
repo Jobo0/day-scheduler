@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import CartContext from "../../../store/cart-context";
 import Card from "../../UI/Card";
 import classes from "./TaskItem.module.css";
 import TaskItemEditForm from "./TaskItemEditForm";
@@ -8,6 +9,8 @@ function TaskItem(props) {
   //props.time will be in form 1234 with hours (0-24) and minutes (00-60)
   const hours = (props.time / 100) >> 0;
   const minutes = props.time % 100;
+
+  const context = useContext(CartContext);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -21,6 +24,11 @@ function TaskItem(props) {
     setIsEdit(false);
   }
 
+  function submitItemHandler(event) {
+    event.preventDefault();
+    context.addItem({name:props.name, description:props.description, time:props.time})
+  }
+
   return (
     <React.Fragment>
       <li className={classes.task}>
@@ -32,7 +40,7 @@ function TaskItem(props) {
           </div>
         </div>
         <div>
-          <TaskItemForm onEdit={onEditHandler} onCloseEdit={onCloseHandler} isEdit={isEdit}/>
+          <TaskItemForm onEdit={onEditHandler} onCloseEdit={onCloseHandler} isEdit={isEdit} onFormSubmit={submitItemHandler}/>
         </div>
       </li>
       <li className={classes["task-edit"]}>
