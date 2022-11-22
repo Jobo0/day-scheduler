@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../UI/Card";
 import classes from "./TaskItem.module.css";
 import TaskItemEditForm from "./TaskItemEditForm";
@@ -9,8 +9,16 @@ function TaskItem(props) {
   const hours = (props.time / 100) >> 0;
   const minutes = props.time % 100;
 
+  const [isEdit, setIsEdit] = useState(false);
+
   function onEditHandler(event) {
     event.preventDefault();
+    setIsEdit(true);
+  }
+
+  function onCloseHandler(event) {
+    event.preventDefault();
+    setIsEdit(false);
   }
 
   return (
@@ -24,13 +32,15 @@ function TaskItem(props) {
           </div>
         </div>
         <div>
-          <TaskItemForm onEdit={onEditHandler} />
+          <TaskItemForm onEdit={onEditHandler} onCloseEdit={onCloseHandler} isEdit={isEdit}/>
         </div>
       </li>
       <li className={classes["task-edit"]}>
-        <Card className={classes["edit-card"]}>
-          <TaskItemEditForm edit={true} id={props.id}/>
-        </Card>
+        {isEdit ? (
+          <Card className={classes["edit-card"]}>
+            <TaskItemEditForm edit={isEdit} id={props.id} />
+          </Card>
+        ) : null}
       </li>
     </React.Fragment>
   );

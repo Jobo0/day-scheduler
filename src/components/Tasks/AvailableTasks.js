@@ -31,7 +31,14 @@ const DUMMY_TASKS = [
   ];
 
 function AvailableTasks (props) {
-    const tasksList = DUMMY_TASKS.map(task => <TaskItem key={task.id} id={task.id} name={task.name} description={task.description} time={task.time}/>);
+
+  function editHandler(event) {
+    event.preventDefault();
+    console.log(event.target);
+    event.target.isEdit = true;
+  }
+
+    const tasksList = DUMMY_TASKS.map(task => <TaskItem key={task.id} id={task.id} name={task.name} description={task.description} time={task.time} onEdit={editHandler}/>);
 
     return <section className={classes.tasks}>
         <Card>

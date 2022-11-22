@@ -15,7 +15,7 @@ function Cart(props) {
   );
   function submitHandler() {}
   return (
-    <Modal>
+    <Modal onBackdropClick={props.onModalExit}>
       {cartContent}
       <div className={classes.total}>
         <span>Total Tasks</span>
