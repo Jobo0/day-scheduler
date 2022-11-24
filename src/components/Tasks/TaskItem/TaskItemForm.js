@@ -18,7 +18,7 @@ function TaskItemForm(props) {
   return (
     <form className={classes.form} onSubmit={props.onFormSubmit}>
       <button type="submit"> ADD </button>
-      <button onClick={props.onCloseEdit}> SAVE </button>
+      <button form={`edit-form${props.id}`} type="submit"> SAVE </button>
     </form>
   );
 }

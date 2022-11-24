@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import CartContext from "../../../store/cart-context";
+import TasksContext from "../../../store/tasks-context";
 import Card from "../../UI/Card";
 import classes from "./TaskItem.module.css";
 import TaskItemEditForm from "./TaskItemEditForm";
@@ -11,6 +12,7 @@ function TaskItem(props) {
   const minutes = props.time % 100;
 
   const context = useContext(CartContext);
+  const tasksContext = useContext(TasksContext);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -29,6 +31,11 @@ function TaskItem(props) {
     context.addItem({name:props.name, description:props.description, time:props.time})
   }
 
+  function submitEditHandler(event) {
+    event.preventDefault();
+    tasksContext.editItem(props.id, "replace with item field values from TaskItemEditForm");
+  }
+
   return (
     <React.Fragment>
       <li className={classes.task}>
@@ -40,13 +47,13 @@ function TaskItem(props) {
           </div>
         </div>
         <div>
-          <TaskItemForm onEdit={onEditHandler} onCloseEdit={onCloseHandler} isEdit={isEdit} onFormSubmit={submitItemHandler}/>
+          <TaskItemForm onEdit={onEditHandler} isEdit={isEdit} onFormSubmit={submitItemHandler} id={props.id}/>
         </div>
       </li>
       <li className={classes["task-edit"]}>
         {isEdit ? (
           <Card className={classes["edit-card"]}>
-            <TaskItemEditForm edit={isEdit} id={props.id} />
+            <TaskItemEditForm edit={isEdit} id={props.id} onClose={onCloseHandler} />
           </Card>
         ) : null}
       </li>

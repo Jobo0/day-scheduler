@@ -1,36 +1,11 @@
-import React from "react";
-import classes from './AvailableTasks.module.css';
-import Card from '../UI/Card';
+import React, { useContext } from "react";
+import classes from "./AvailableTasks.module.css";
+import Card from "../UI/Card";
 import TaskItem from "./TaskItem/TaskItem";
+import TasksContext from "../../store/tasks-context";
 
-const DUMMY_TASKS = [
-    {
-      id: '1',
-      name: 'Breakfast',
-      description: 'Fuel for the morning',
-      time: 845,
-    },
-    {
-      id: '2',
-      name: 'Workout',
-      description: 'Energy and mood boost',
-      time: 1230,
-    },
-    {
-      id: '3',
-      name: 'Meal',
-      description: 'Lunch/Dinner',
-      time: 1650,
-    },
-    {
-      id: '4',
-      name: 'Complete 1 Chapter',
-      description: '1 Chapter of learning',
-      time: 2000,
-    },
-  ];
-
-function AvailableTasks (props) {
+function AvailableTasks(props) {
+  const tasksContext = useContext(TasksContext);
 
   function editHandler(event) {
     event.preventDefault();
@@ -38,15 +13,26 @@ function AvailableTasks (props) {
     event.target.isEdit = true;
   }
 
-    const tasksList = DUMMY_TASKS.map(task => <TaskItem key={task.id} id={task.id} name={task.name} description={task.description} time={task.time} onEdit={editHandler}/>);
+  const tasksList = tasksContext.tasks.map((task) => (
+    <TaskItem
+      key={task.id}
+      id={task.id}
+      name={task.name}
+      description={task.description}
+      time={task.time}
+      onEdit={editHandler}
+    />
+  ));
 
-    return <section className={classes.tasks}>
-        <Card>
-          <ul>
-            {tasksList}
-          </ul>
-        </Card>
+  return (
+    <section className={classes.tasks}>
+      <Card>
+        <ul>
+          {tasksList}
+        </ul>
+      </Card>
     </section>
+  );
 }
 
 export default AvailableTasks;
