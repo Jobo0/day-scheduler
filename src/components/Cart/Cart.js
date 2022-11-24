@@ -15,11 +15,11 @@ function Cart(props) {
   function submitHandler() {}
   return (
     <Modal onBackdropClick={props.onModalExit}>
-      {cartContent}
       <div className={classes.total}>
         <span>Total Tasks</span>
         <span>{context.count}</span>
       </div>
+      {cartContent}
       <div className={classes.actions}>
         <button className={classes["button--alt"]} onClick={props.onModalExit}>
           Close
