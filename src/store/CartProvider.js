@@ -14,6 +14,9 @@ const cartReducer = (state, action) => {
   }
   if (action.type === "REMOVE") {
     //const updatedItems = state.item
+    const updatedItems = state.items.filter((item) => {return item.id != action.id});
+    const updatedCount = state.count - 1;
+    return {items: updatedItems, count: updatedCount};
   }
   return;
 };
@@ -29,7 +32,7 @@ function CartProvider(props) {
   };
 
   const removeItemHandler = (id) => {
-    dispatchCartAction({ type: "REMOVE" });
+    dispatchCartAction({ type: "REMOVE" , id:id});
   };
 
   const cartContext = {
