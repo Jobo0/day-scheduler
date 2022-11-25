@@ -28,11 +28,15 @@ function TaskItem(props) {
 
   function submitItemHandler(event) {
     event.preventDefault();
-    context.addItem({name:props.name, description:props.description, time:props.time})
+    context.addItem({
+      name: props.name,
+      description: props.description,
+      time: props.time,
+    });
   }
 
   function submitEditHandler(editedTask) {
-    tasksContext.editItem(props.id, {...editedTask});
+    tasksContext.editItem(props.id, { ...editedTask });
   }
 
   return (
@@ -46,13 +50,26 @@ function TaskItem(props) {
           </div>
         </div>
         <div>
-          <TaskItemForm onEdit={onEditHandler} isEdit={isEdit} onFormSubmit={submitItemHandler} id={props.id}/>
+          <TaskItemForm
+            onEdit={onEditHandler}
+            isEdit={isEdit}
+            onFormSubmit={submitItemHandler}
+            id={props.id}
+          />
         </div>
       </li>
       <li className={classes["task-edit"]}>
         {isEdit ? (
           <Card className={classes["edit-card"]}>
-            <TaskItemEditForm edit={isEdit} id={props.id} onClose={onCloseHandler} onSubmitEdit={submitEditHandler}/>
+            <TaskItemEditForm
+              edit={isEdit}
+              id={props.id}
+              onClose={onCloseHandler}
+              onSubmitEdit={submitEditHandler}
+              defaultName={props.name}
+              defaultDesc={props.description}
+              defaultTime={props.time}
+            />
           </Card>
         ) : null}
       </li>

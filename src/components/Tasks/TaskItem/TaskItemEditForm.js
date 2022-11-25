@@ -30,17 +30,29 @@ function TaskItemEditForm(props) {
         <Input
           ref={nameRef}
           label="Title"
-          input={{ id: "name" + props.id, type: "text" }}
+          input={{
+            id: "name" + props.id,
+            type: "text",
+            defaultValue: props.defaultName,
+          }}
         />
         <Input
           ref={descRef}
           label="Desc"
-          input={{ id: "desc" + props.id, type: "text" }}
+          input={{
+            id: "desc" + props.id,
+            type: "text",
+            defaultValue: props.defaultDesc,
+          }}
         />
         <Input
           ref={timeRef}
           label="Time"
-          input={{ id: "time" + props.id, type: "number" }}
+          input={{
+            id: "time" + props.id,
+            type: "number",
+            defaultValue: props.defaultTime,
+          }}
         />
       </form>
     );
