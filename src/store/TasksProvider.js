@@ -4,27 +4,27 @@ import TasksContext from "./tasks-context";
 const defaultTasksState = {
   tasks: [
     {
-      id: '1',
-      name: 'Breakfast',
-      description: 'Fuel for the morning',
+      id: "1",
+      name: "Breakfast",
+      description: "Fuel for the morning",
       time: 845,
     },
     {
-      id: '2',
-      name: 'Workout',
-      description: 'Energy and mood boost',
+      id: "2",
+      name: "Workout",
+      description: "Energy and mood boost",
       time: 1230,
     },
     {
-      id: '3',
-      name: 'Meal',
-      description: 'Lunch/Dinner',
+      id: "3",
+      name: "Meal",
+      description: "Lunch/Dinner",
       time: 1650,
     },
     {
-      id: '4',
-      name: 'Complete 1 Chapter',
-      description: '1 Chapter of learning',
+      id: "4",
+      name: "Complete 1 Chapter",
+      description: "1 Chapter of learning",
       time: 2000,
     },
   ],
@@ -39,10 +39,16 @@ const tasksReducer = (state, action) => {
   }
   if (action.type === "REMOVE") {
     //const updatedItems = state.item
-    
   }
   if (action.type === "EDIT") {
-
+    const updatedTasks = state.tasks.map((task) => {
+      if (task.id === action.id) {
+        return { id: action.id, ...action.newTask };
+      }
+      return task;
+    });
+    console.log(updatedTasks);
+    return { tasks: updatedTasks };
   }
   return;
 };
@@ -58,19 +64,19 @@ function TasksProvider(props) {
   };
 
   const removeItemHandler = (id) => {
-    dispatchAction({ type: "REMOVE" , });
+    dispatchAction({ type: "REMOVE" });
   };
 
   const editItemHandler = (id, newTask) => {
-
-  }
+    dispatchAction({ type: "EDIT", id: id, newTask: newTask });
+  };
 
   const tasksContext = {
     tasks: tasksState.tasks,
     count: tasksState.count,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
-    editItem: editItemHandler
+    editItem: editItemHandler,
   };
 
   return (

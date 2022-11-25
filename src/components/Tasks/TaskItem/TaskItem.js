@@ -31,9 +31,8 @@ function TaskItem(props) {
     context.addItem({name:props.name, description:props.description, time:props.time})
   }
 
-  function submitEditHandler(event) {
-    event.preventDefault();
-    tasksContext.editItem(props.id, "replace with item field values from TaskItemEditForm");
+  function submitEditHandler(editedTask) {
+    tasksContext.editItem(props.id, {...editedTask});
   }
 
   return (
@@ -53,7 +52,7 @@ function TaskItem(props) {
       <li className={classes["task-edit"]}>
         {isEdit ? (
           <Card className={classes["edit-card"]}>
-            <TaskItemEditForm edit={isEdit} id={props.id} onClose={onCloseHandler} />
+            <TaskItemEditForm edit={isEdit} id={props.id} onClose={onCloseHandler} onSubmitEdit={submitEditHandler}/>
           </Card>
         ) : null}
       </li>
