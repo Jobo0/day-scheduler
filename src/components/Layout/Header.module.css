@@ -25,5 +25,5 @@
     width: 110%;
     height: 100%;
     object-fit: cover;
-    transform: rotateZ(-3deg) translateY(-12rem) translateX(-1rem);
+    transform: rotateZ(0deg) translateY(-9rem) translateX(-10rem);
   }
