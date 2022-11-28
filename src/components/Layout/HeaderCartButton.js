@@ -13,7 +13,7 @@ function HeaderCartButton (props) {
         <span className={classes.icon}>
             <CartIcon/>
         </span>
-        <span>
+        <span className={classes.text}>
             task-cart
         </span>
         <span className={classes.badge}>
