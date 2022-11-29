@@ -7,9 +7,9 @@
     margin-bottom: 0.5rem;
     font: inherit;
     cursor: pointer;
-    background-color: #0d4083;
-    border: 1px solid #0a0a98;
-    color: white;
+    background-color: #28304b;
+    border: 1px solid #28304b;
+    color: #d7d9c0;
     padding: 0.25rem 2rem;
     border-radius: 20px;
     font-weight: bold;
@@ -17,6 +17,6 @@
   
   .form button:hover,
   .form button:active {
-    background-color: #248ab6;
-    border-color: #248ab6;
+    background-color: #1c2235;
+    border-color: #1c2235;
   }

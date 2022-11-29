@@ -1,4 +1,5 @@
 .task {
+    color: #ecede2;
     display: flex;
     justify-content: space-between;
     margin: 1rem;
@@ -16,7 +17,7 @@
   .time {
     margin-top: 0.25rem;
     font-weight: bold;
-    color: #0274ad;
+    color: #ffffff;
     font-size: 1.25rem;
   }
 
