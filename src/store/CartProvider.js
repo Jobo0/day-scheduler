@@ -8,15 +8,25 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    const updatedItems = state.items.concat(action.item);
-    const updatedCount = state.count + 1;
-    return { items: updatedItems, count: updatedCount };
+    const exists = state.items.findIndex((task) => {
+      return task.id === action.item.id;
+    });
+    if (exists < 0) {
+      //cant figure out how to add sorted items, have to sort entire list
+      const updatedItems = state.items
+        .concat(action.item)
+        .sort((a, b) => (a.time > b.time ? 1 : -1));
+      const updatedCount = state.count + 1;
+      return { items: updatedItems, count: updatedCount };
+    }
+    return { items: state.items, count: state.count };
   }
   if (action.type === "REMOVE") {
-    //const updatedItems = state.item
-    const updatedItems = state.items.filter((item) => {return item.id != action.id});
+    const updatedItems = state.items.filter((item) => {
+      return item.id != action.id;
+    });
     const updatedCount = state.count - 1;
-    return {items: updatedItems, count: updatedCount};
+    return { items: updatedItems, count: updatedCount };
   }
   return;
 };
@@ -32,7 +42,7 @@ function CartProvider(props) {
   };
 
   const removeItemHandler = (id) => {
-    dispatchCartAction({ type: "REMOVE" , id:id});
+    dispatchCartAction({ type: "REMOVE", id: id });
   };
 
   const cartContext = {

@@ -29,6 +29,7 @@ function TaskItem(props) {
   function submitItemHandler(event) {
     event.preventDefault();
     context.addItem({
+      id: props.id,
       name: props.name,
       description: props.description,
       time: props.time,
