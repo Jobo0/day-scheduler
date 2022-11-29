@@ -2,7 +2,7 @@
     max-width: 60rem;
     width: 90%;
     margin: 2rem auto;
-    animation: meals-appear 1s ease-out forwards;
+    animation: appear 1s ease-out forwards;
   }
   
   .tasks ul {
@@ -11,7 +11,7 @@
     padding: 0;
   }
   
-  @keyframes meals-appear {
+  @keyframes appear {
     from {
       opacity: 0;
       transform: translateY(3rem);

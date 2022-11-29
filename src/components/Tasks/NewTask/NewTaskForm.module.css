@@ -1,0 +1,28 @@
+.new {
+    font:inherit;
+    font-weight: bold;
+    max-width: 15rem;
+    display:flex;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #323c5d;
+    color: #ecede2;
+    border-radius: 10px;
+    border:none;
+    animation: appear 1s ease-out forwards;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

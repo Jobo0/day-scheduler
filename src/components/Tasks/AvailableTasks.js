@@ -3,6 +3,7 @@ import classes from "./AvailableTasks.module.css";
 import Card from "../UI/Card";
 import TaskItem from "./TaskItem/TaskItem";
 import TasksContext from "../../store/tasks-context";
+import NewTaskForm from "./NewTask/NewTaskForm";
 
 function AvailableTasks(props) {
   const tasksContext = useContext(TasksContext);
@@ -31,6 +32,7 @@ function AvailableTasks(props) {
           {tasksList}
         </ul>
       </Card>
+      <NewTaskForm></NewTaskForm>
     </section>
   );
 }
