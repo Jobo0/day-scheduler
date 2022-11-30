@@ -1,0 +1,46 @@
+.new-form {
+  margin: 0;
+  padding: 0;
+  max-height: 35rem;
+  overflow: auto;
+  color: #323c5d;
+}
+.new-form h2 {
+  color: #323c5d;
+  text-align: center;
+}
+
+.new-form input {
+  color: #323c5d;
+}
+
+.actions {
+    padding-top: 1rem;
+    text-align: right;
+}
+
+.actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #323c5d;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #28304b;
+    border-color: #28304b;
+    color: #d7d9c0;
+  }
+  
+  .actions .button--alt {
+    color: #323c5d;
+  }
+  
+  .actions .button {
+    background-color: #323c5d;
+    color: #d7d9c0;
+  }

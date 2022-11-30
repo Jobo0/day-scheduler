@@ -1,14 +1,25 @@
-import React from "react";
-import classes from './NewTaskForm.module.css';
+import React, { useState } from "react";
+import classes from "./NewTaskForm.module.css";
+import Modal from "../../UI/Modal";
+import NewTaskModal from "./NewTaskModal";
 
-function NewTaskForm (props) {
-    function onNewHandler() {
-        
-    }
+function NewTaskForm(props) {
+  const [showForm, setShowForm] = useState(false);
+  function onNewHandler() {
+    setShowForm(true);
+  }
+  function onCloseHandler() {
+    setShowForm(false);
+  }
 
-    return <button onClick={onNewHandler} className={classes.new}>
+  return (
+    <React.Fragment>
+      <button onClick={onNewHandler} className={classes.new}>
         Add Task
-    </button>
+      </button>
+      <NewTaskModal showForm={showForm} onClose={onCloseHandler}></NewTaskModal>
+    </React.Fragment>
+  );
 }
 
 export default NewTaskForm;

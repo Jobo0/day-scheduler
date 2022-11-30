@@ -14,7 +14,10 @@
     justify-content: space-around;
     align-items: center;
   }
-
+.new:hover,
+.new:active {
+    background-color: #1c2235;
+}
   @keyframes appear {
     from {
       opacity: 0;
