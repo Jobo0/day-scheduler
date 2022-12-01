@@ -28,7 +28,7 @@ const defaultTasksState = {
       time: 2000,
     },
   ],
-  count: 0,
+  count: 4,
 };
 
 const tasksReducer = (state, action) => {
