@@ -39,7 +39,7 @@ const tasksReducer = (state, action) => {
   }
   if (action.type === "REMOVE") {
     //const updatedItems = state.item
-    const updatedTasks = state.tasks.filter((task) => {return task.id != action.id});
+    const updatedTasks = state.tasks.filter((task) => {return task.id !== action.id});
     const updatedCount = state.count - 1;
     return { tasks: updatedTasks, count: updatedCount};
   }
