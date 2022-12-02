@@ -26,6 +26,11 @@ function TaskItem(props) {
     setIsEdit(false);
   }
 
+  function onDeleteHandler() {
+    console.log(`removing item id: ${props.id}`)
+    tasksContext.removeItem(props.id);
+  }
+
   function submitItemHandler(event) {
     event.preventDefault();
     context.addItem({
@@ -56,6 +61,7 @@ function TaskItem(props) {
             isEdit={isEdit}
             onFormSubmit={submitItemHandler}
             id={props.id}
+            onDelete={onDeleteHandler}
           />
         </div>
       </li>

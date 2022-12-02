@@ -22,3 +22,8 @@
       transform: translateY(0);
     }
   }
+
+  .tasks p {
+    color: #d7d9c0;
+    text-align: center;
+  }

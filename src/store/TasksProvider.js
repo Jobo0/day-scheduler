@@ -67,7 +67,7 @@ function TasksProvider(props) {
   };
 
   const removeItemHandler = (id) => {
-    dispatchAction({ type: "REMOVE" });
+    dispatchAction({ type: "REMOVE" , id:id});
   };
 
   const editItemHandler = (id, newTask) => {

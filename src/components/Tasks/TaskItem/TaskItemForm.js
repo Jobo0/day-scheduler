@@ -9,7 +9,7 @@ function TaskItemForm(props) {
   if (!props.isEdit) {
     return (
       <form className={classes.form} onSubmit={props.onFormSubmit}>
-        <button type="submit"> ADD </button>
+        <div><button type="submit"> ADD </button></div>
         <button onClick={props.onEdit}> EDIT </button>
       </form>
     );
@@ -17,8 +17,11 @@ function TaskItemForm(props) {
 
   return (
     <form className={classes.form} onSubmit={props.onFormSubmit}>
-      <button type="submit"> ADD </button>
-      <button form={`edit-form${props.id}`} type="submit"> SAVE </button>
+      <div><button className={classes.add} type="submit"> ADD </button></div>
+      <div className={classes.inline}>
+        <button type="button" onClick={props.onDelete}> DELETE </button>
+        <button form={`edit-form${props.id}`} type="submit"> SAVE </button>
+      </div>
     </form>
   );
 }
