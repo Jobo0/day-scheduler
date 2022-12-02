@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classes from "./NewTaskForm.module.css";
-import Modal from "../../UI/Modal";
 import NewTaskModal from "./NewTaskModal";
 
 function NewTaskForm(props) {
@@ -8,8 +7,7 @@ function NewTaskForm(props) {
   function onNewHandler() {
     setShowForm(true);
   }
-  function onCloseHandler(event) {
-    event.preventDefault();
+  function onCloseHandler() {
     setShowForm(false);
   }
 

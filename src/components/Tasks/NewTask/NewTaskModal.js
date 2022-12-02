@@ -1,5 +1,4 @@
 import React, { useContext, useRef } from "react";
-import Card from "../../UI/Card";
 import Input from "../../UI/Input";
 import Modal from "../../UI/Modal";
 import classes from "./NewTaskModal.module.css";
@@ -21,7 +20,7 @@ function NewTaskModal(props) {
     };
 
     tasksContext.addItem(newTask);
-    props.onClose(event);
+    props.onClose();
   }
 
   if (props.showForm) {

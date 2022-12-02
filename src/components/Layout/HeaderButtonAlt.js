@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import classes from "./HeaderCartButton.module.css";
 
 function HeaderButtonAlt(props) {

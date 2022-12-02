@@ -23,7 +23,7 @@ const cartReducer = (state, action) => {
   }
   if (action.type === "REMOVE") {
     const updatedItems = state.items.filter((item) => {
-      return item.id != action.id;
+      return item.id !== action.id;
     });
     const updatedCount = state.count - 1;
     return { items: updatedItems, count: updatedCount };

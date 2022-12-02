@@ -2,9 +2,6 @@ import React from "react";
 import classes from "./TaskItemForm.module.css";
 
 function TaskItemForm(props) {
-    function submitHandler(event) {
-        event.preventDefault();
-    }
 
   if (!props.isEdit) {
     return (
