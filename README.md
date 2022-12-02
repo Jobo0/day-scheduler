@@ -3,7 +3,7 @@ FEATURE ROADMAP:
     - Remove tasks from list (complete)
     - local storage of task list (complete)
     - "begin" button functionality: 
-        - loads new page
+        - loads new page (complete)
         - loads list with timers & real time
         - display current task
 

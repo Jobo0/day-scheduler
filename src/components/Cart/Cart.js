@@ -1,19 +1,24 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import CartContext from "../../store/cart-context";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 function Cart(props) {
-
   function removeHandler(id) {
-    context.removeItem(id)
+    context.removeItem(id);
   }
-    const context = useContext(CartContext);
+  const context = useContext(CartContext);
   const cartContent = (
-    <ul className={classes['cart-items']}>
+    <ul className={classes["cart-items"]}>
       {context.items.map((task) => (
-        <CartItem key={task.id} name={task.name} time={task.time} onRemove={removeHandler.bind(null, task.id)}/>
+        <CartItem
+          key={task.id}
+          name={task.name}
+          time={task.time}
+          onRemove={removeHandler.bind(null, task.id)}
+        />
       ))}
     </ul>
   );
@@ -29,9 +34,11 @@ function Cart(props) {
         <button className={classes["button--alt"]} onClick={props.onModalExit}>
           Close
         </button>
-        <button className={classes.button} onClick={submitHandler}>
-          Begin
-        </button>
+        <Link to="/start">
+          <button className={classes.button} onClick={submitHandler}>
+            Begin
+          </button>
+        </Link>
       </div>
     </Modal>
   );
