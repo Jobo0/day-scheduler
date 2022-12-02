@@ -1,7 +1,7 @@
 # day-scheduler
 FEATURE ROADMAP: 
     - Remove tasks from list (complete)
-    - local storage of task list
+    - local storage of task list (complete)
     - "begin" button functionality: 
         - loads new page
         - loads list with timers & real time

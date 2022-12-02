@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import TasksContext from "./tasks-context";
 
 const defaultTasksState = {
@@ -37,13 +37,19 @@ const tasksReducer = (state, action) => {
     const updatedTasks = state.tasks.concat(action.task);
     const updatedCount = state.count + 1;
     const updatedIDCount = state.idCount + 1;
-    return { tasks: updatedTasks, count: updatedCount, idCount: updatedIDCount };
+    return {
+      tasks: updatedTasks,
+      count: updatedCount,
+      idCount: updatedIDCount,
+    };
   }
   if (action.type === "REMOVE") {
     //const updatedItems = state.item
-    const updatedTasks = state.tasks.filter((task) => {return task.id !== action.id});
+    const updatedTasks = state.tasks.filter((task) => {
+      return task.id !== action.id;
+    });
     const updatedCount = state.count - 1;
-    return { tasks: updatedTasks, count: updatedCount, idCount: state.idCount};
+    return { tasks: updatedTasks, count: updatedCount, idCount: state.idCount };
   }
   if (action.type === "EDIT") {
     const updatedTasks = state.tasks.map((task) => {
@@ -53,23 +59,32 @@ const tasksReducer = (state, action) => {
       return task;
     });
     console.log(updatedTasks);
-    return { tasks: updatedTasks, count:state.count, idCount: state.idCount};
+    return { tasks: updatedTasks, count: state.count, idCount: state.idCount };
   }
   return;
 };
 
+function getDefaultState() {
+  const inStorage = localStorage.getItem("tasksState");
+  return inStorage ? JSON.parse(inStorage) : defaultTasksState;
+}
+
 function TasksProvider(props) {
   const [tasksState, dispatchAction] = useReducer(
     tasksReducer,
-    defaultTasksState
+    getDefaultState()
   );
+
+  useEffect(() => {
+    localStorage.setItem("tasksState", JSON.stringify(tasksState));
+  }, [tasksState]);
 
   const addItemHandler = (task) => {
     dispatchAction({ type: "ADD", task: task });
   };
 
   const removeItemHandler = (id) => {
-    dispatchAction({ type: "REMOVE" , id:id});
+    dispatchAction({ type: "REMOVE", id: id });
   };
 
   const editItemHandler = (id, newTask) => {
