@@ -17,6 +17,7 @@
 .new:hover,
 .new:active {
     background-color: #1c2235;
+    cursor:pointer;
 }
   @keyframes appear {
     from {
