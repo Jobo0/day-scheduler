@@ -29,7 +29,7 @@ function AvailableTasks(props) {
     <section className={classes.tasks}>
       <Card>
         <ul>
-          {tasksContext.count === 0 ? tasksList : <p>Add some tasks to get started!</p>}
+          {tasksContext.count > 0 ? tasksList : <p>Add some tasks to get started!</p>}
         </ul>
       </Card>
       <NewTaskForm></NewTaskForm>
