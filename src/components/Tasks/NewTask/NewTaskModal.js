@@ -14,14 +14,14 @@ function NewTaskModal(props) {
 
   function submitCreateHandler() {
     const newTask = {
-      id: `${tasksContext.count + 1}`,
+      id: `${tasksContext.idCount + 1}`,
       name: nameRef.current.value,
       description: descRef.current.value,
       time: timeRef.current.value,
     };
 
     tasksContext.addItem(newTask);
-    props.onClose();
+    props.onClose(event);
   }
 
   if (props.showForm) {
@@ -34,7 +34,7 @@ function NewTaskModal(props) {
           <Input ref={timeRef} label="Time" input={{ type: "number" }} />
 
           <div className={classes.actions}>
-            <button className={classes["button--alt"]} onClick={props.onClose}>
+            <button className={classes["button--alt"]} onClick={props.onClose} type="button">
               Cancel
             </button>
             <button className={classes.button} type="submit">

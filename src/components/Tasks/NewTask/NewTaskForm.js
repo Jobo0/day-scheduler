@@ -8,7 +8,8 @@ function NewTaskForm(props) {
   function onNewHandler() {
     setShowForm(true);
   }
-  function onCloseHandler() {
+  function onCloseHandler(event) {
+    event.preventDefault();
     setShowForm(false);
   }
 

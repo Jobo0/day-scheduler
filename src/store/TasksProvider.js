@@ -29,19 +29,21 @@ const defaultTasksState = {
     },
   ],
   count: 4,
+  idCount: 4,
 };
 
 const tasksReducer = (state, action) => {
   if (action.type === "ADD") {
     const updatedTasks = state.tasks.concat(action.task);
     const updatedCount = state.count + 1;
-    return { tasks: updatedTasks, count: updatedCount };
+    const updatedIDCount = state.idCount + 1;
+    return { tasks: updatedTasks, count: updatedCount, idCount: updatedIDCount };
   }
   if (action.type === "REMOVE") {
     //const updatedItems = state.item
     const updatedTasks = state.tasks.filter((task) => {return task.id !== action.id});
     const updatedCount = state.count - 1;
-    return { tasks: updatedTasks, count: updatedCount};
+    return { tasks: updatedTasks, count: updatedCount, idCount: state.idCount};
   }
   if (action.type === "EDIT") {
     const updatedTasks = state.tasks.map((task) => {
@@ -51,7 +53,7 @@ const tasksReducer = (state, action) => {
       return task;
     });
     console.log(updatedTasks);
-    return { tasks: updatedTasks };
+    return { tasks: updatedTasks, count:state.count, idCount: state.idCount};
   }
   return;
 };
@@ -77,6 +79,7 @@ function TasksProvider(props) {
   const tasksContext = {
     tasks: tasksState.tasks,
     count: tasksState.count,
+    idCount: tasksState.idCount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
     editItem: editItemHandler,
