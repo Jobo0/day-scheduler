@@ -6,13 +6,13 @@ const defaultTasksState = {
     {
       id: "1",
       name: "Breakfast",
-      description: "Fuel for the morning",
+      description: "Remember medication/supplements",
       time: 845,
     },
     {
       id: "2",
       name: "Workout",
-      description: "Energy and mood boost",
+      description: "Include 10 minutes cardio",
       time: 1230,
     },
     {
