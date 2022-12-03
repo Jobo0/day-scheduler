@@ -16,7 +16,7 @@ function NewTaskModal(props) {
       id: `${tasksContext.idCount + 1}`,
       name: nameRef.current.value,
       description: descRef.current.value,
-      time: timeRef.current.value,
+      time: +timeRef.current.value,
     };
 
     tasksContext.addItem(newTask);

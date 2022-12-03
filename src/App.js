@@ -43,7 +43,8 @@ function StartPage() {
   return (
     <React.Fragment>
       <HeaderAlt onButtonClick={returnRedirectHandler} />
-      <main><TimerDisplay></TimerDisplay>
+      <main>
+        <TimerDisplay></TimerDisplay>
       </main>
     </React.Fragment>
   );
