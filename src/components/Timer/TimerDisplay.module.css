@@ -1,13 +1,84 @@
 .clock {
-    text-align: center;
-    padding-top: 10rem;
-    font-size: 2.5rem;
-    color:#28304b;
-    font-weight: bold;
+  text-align: center;
+  padding-top: 10rem;
+  font-size: 2.5rem;
+  color: #28304b;
+  font-weight: bold;
 }
 
 .message {
-    margin-top: 4rem;
-    font-size: 3.5rem;
-    color:#102a7f;
+  font-size: 3.5rem;
+  color: #102a7f;
+}
+
+.bigbutton {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  width: 45%;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 3rem;
+  transition: 0.5s;
+  animation: appear 0.7s ease-out;
+  position: relative;
+}
+
+.bigbutton:hover {
+  transition: 0.3s;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.bigbutton::after {
+  content: "Click to complete";
+  opacity: 0;
+  position: relative;
+  transition: 0.5s;
+  top: 3rem;
+}
+
+.bigbutton:hover::after {
+  opacity: 1;
+  top: 6rem;
+}
+
+.bigbutton.completing {
+  transform: scale(1.05);
+  animation: complete 1s ease;
+  animation-fill-mode: forwards;
+}
+
+.bigbutton.completing::before {
+  position: absolute;
+  content: "Success!";
+    margin:auto;
+  left: 1rem;
+  right: 0;
+  text-align: center;
+  color: #417451;
+    top: 9rem;
+  font-size: 5rem;
+  animation: appear 0.3s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes complete {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
 }

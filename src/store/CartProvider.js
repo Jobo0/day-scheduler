@@ -28,6 +28,20 @@ const cartReducer = (state, action) => {
     const updatedCount = state.count - 1;
     return { items: updatedItems, count: updatedCount };
   }
+  if (action.type === "COMPLETE") {
+    const updatedItems = state.items.map((item) => {
+      if (item.id === action.id) {
+        console.log(`item completed id: ${item.id}`);
+        return { id:item.id, name:item.name, description:item.description, time:item.time, complete:true };
+      }
+      return item;
+    });
+    
+    return {items: updatedItems, count: state.count};
+  }
+  if (action.type === "CLEAR") {
+    return {items: [], count: 0};
+  }
   return;
 };
 
@@ -54,11 +68,21 @@ function CartProvider(props) {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
+  const completeItemHandler = (id) => {
+    dispatchCartAction({ type: "COMPLETE", id: id});
+  }
+
+  const clearCartHandler = () => {
+    dispatchCartAction({ type: "CLEAR"});
+  }
+
   const cartContext = {
     items: cartState.items,
     count: cartState.count,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    completeItem: completeItemHandler,
+    clearCart: clearCartHandler,
   };
 
   return (

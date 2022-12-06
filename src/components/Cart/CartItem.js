@@ -8,6 +8,7 @@ function CartItem(props) {
     <li className={classes.item}>
       <div>
         <h2>{props.name}</h2>
+        <span className={classes.complete}>{props.complete ? "Complete" : ""}</span>
       </div>
       <div className={classes.actions}>
         <div className={classes.time}>

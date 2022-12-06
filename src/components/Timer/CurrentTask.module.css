@@ -1,14 +1,16 @@
 .current {
-    margin-top: 9rem;
+    margin-top: 0rem;
     font-size: 3.5rem;
 }
 .current h2 {
+    margin-top: 0rem;
     margin-bottom: 0rem;
     color:#102a7f;
 }
 .time {
     margin-top: 1rem;
     color:#102a7f;
+    margin-bottom: -3rem;
 }
 .desc {
     font-size: 2rem;

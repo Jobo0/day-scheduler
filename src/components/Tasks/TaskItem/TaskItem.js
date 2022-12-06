@@ -38,6 +38,7 @@ function TaskItem(props) {
       name: props.name,
       description: props.description,
       time: +props.time,
+      complete: false,
     });
   }
 

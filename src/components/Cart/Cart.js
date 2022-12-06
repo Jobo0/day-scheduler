@@ -17,6 +17,7 @@ function Cart(props) {
           key={task.id}
           name={task.name}
           time={task.time}
+          complete={task.complete}
           onRemove={removeHandler.bind(null, task.id)}
         />
       ))}
