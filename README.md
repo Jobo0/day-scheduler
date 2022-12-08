@@ -1,4 +1,6 @@
 # day-scheduler
+[Deployed Version](https://www.dayscheduler.ca)
+
 FEATURE ROADMAP: V1 Complete
     - Remove tasks from list (complete)
     - local storage of task list (complete)
