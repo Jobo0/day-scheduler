@@ -18,14 +18,17 @@ function TasksPage() {
   function cartExitHandler(event) {
     setModalVisible(false);
   }
-
-  useEffect(()=> {
+  
+  //this doenst work, when cart context clears, it will re-render
+  // TasksPage(), and useEffect will infinitely stack
+  /*useEffect(()=> {
     const storedDay = localStorage.getItem("cartDate");
     const currentDay = JSON.stringify(new Date().getDay());
     if (storedDay !== currentDay) {
       cartContext.clearCart();
     };
-  });
+    console.log("checking if cart clear");
+  },[cartContext.items]);*/
 
   return (
     <React.Fragment>
