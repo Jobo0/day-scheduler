@@ -12,12 +12,14 @@ FEATURE ROADMAP: V1 Complete
 
 ADDITIONAL FUNCTIONALITY:
     - Button to view history of completed tasks
-        - Reformat cart tasks to have date object
-        - Reformat time input to use date object
-    - MUI time selector when adding or editing tasks
+        - Reformat cart tasks to have date object (complete)
+        - Reformat time input to use date object (complete)
+    - MUI time selector when adding or editing tasks (complete)
 
 LOW PRIORITY:
     - useCallback and react memo to optimize task list
 
-// add task not using moment object
-// start page not using moment objects
+INSTRUCTIONS TO RUN LOCALLY:
+    - Download project
+    - [ npm install ] from root directory
+    - [ npm run start ]
