@@ -9,7 +9,7 @@ import moment from "moment";
 function TaskItemEditForm(props) {
   const nameRef = useRef();
   const descRef = useRef();
-  const [timeState, setTimeState] = useState(null);
+  const [timeState, setTimeState] = useState(props.defaultTime);
   function onTimeChange(newValue) {
     setTimeState(newValue);
     console.log(moment(timeState).format("HH:mm"));
