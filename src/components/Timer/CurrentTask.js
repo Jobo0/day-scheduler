@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./CurrentTask.module.css";
+import moment from "moment";
 
 function CurrentTask(props) {
-  const hours = (props.time / 100) >> 0;
-  const minutes = props.time % 100;
-
+  //const hours = (props.time / 100) >> 0;
+  //const minutes = props.time % 100;
+/*
     function timeConvert() {
         const formatMin = minutes < 10 ? `0${minutes}` : minutes;
         if (hours === 0) {
@@ -21,14 +22,14 @@ function CurrentTask(props) {
         }
         return;
     }
-
+    */
   return (
     <div className={classes.current}>
       <h2>{props.name}</h2>
       <div className={classes.desc}>{props.desc}</div>
       <div className={classes.label}>Complete by:</div>
       <div className={classes.time}>
-        {timeConvert()}
+        {moment(props.time).format("hh:mm A")}
       </div>
     </div>
   );

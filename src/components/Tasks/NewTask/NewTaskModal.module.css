@@ -14,6 +14,10 @@
   color: #323c5d;
 }
 
+.time {
+  text-align: center;
+}
+
 .actions {
     padding-top: 1rem;
     text-align: right;

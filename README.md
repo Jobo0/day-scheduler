@@ -18,3 +18,6 @@ ADDITIONAL FUNCTIONALITY:
 
 LOW PRIORITY:
     - useCallback and react memo to optimize task list
+
+// add task not using moment object
+// start page not using moment objects

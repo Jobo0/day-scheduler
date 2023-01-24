@@ -1,18 +1,26 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Input from "../../UI/Input";
 import classes from "./TaskItemEditForm.module.css";
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import MUITimePicker from "../../UI/MUITimePicker.js";
+import moment from "moment";
 
 function TaskItemEditForm(props) {
   const nameRef = useRef();
   const descRef = useRef();
-  const timeRef = useRef();
+  const [timeState, setTimeState] = useState(null);
+  function onTimeChange(newValue) {
+    setTimeState(newValue);
+    console.log(moment(timeState).format("HH:mm"));
+  }
 
   function submitHandler(event) {
     event.preventDefault();
     const editedTask = {
       name: nameRef.current.value,
       description: descRef.current.value,
-      time: timeRef.current.value,
+      time: timeState,
     };
     props.onSubmitEdit(editedTask);
     console.log(`TaskItemEditForm submitted id:${props.id}`);
@@ -45,15 +53,9 @@ function TaskItemEditForm(props) {
             defaultValue: props.defaultDesc,
           }}
         />
-        <Input
-          ref={timeRef}
-          label="Time"
-          input={{
-            id: "time" + props.id,
-            type: "number",
-            defaultValue: props.defaultTime,
-          }}
-        />
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <MUITimePicker time={timeState} onChange={onTimeChange}></MUITimePicker>
+        </LocalizationProvider>
       </form>
     );
   }

@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import CartContext from "./cart-context";
+import moment from "moment";
 
 const defaultCartState = {
   items: [],
@@ -15,7 +16,7 @@ const cartReducer = (state, action) => {
       //cant figure out how to add sorted items, have to sort entire list
       const updatedItems = state.items
         .concat(action.item)
-        .sort((a, b) => (a.time > b.time ? 1 : -1));
+        .sort((a, b) => (moment(a.time).format("Hmm") > moment(b.time).format("Hmm") ? 1 : -1));
       const updatedCount = state.count + 1;
       return { items: updatedItems, count: updatedCount };
     }

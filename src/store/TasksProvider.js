@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import TasksContext from "./tasks-context";
+import moment from "moment";
 
 const defaultTasksState = {
   tasks: [
@@ -7,25 +8,25 @@ const defaultTasksState = {
       id: "1",
       name: "Breakfast",
       description: "Remember medication/supplements",
-      time: 845,
+      time: moment({hour: 8, minute: 45}),
     },
     {
       id: "2",
       name: "Workout",
       description: "Include 10 minutes cardio",
-      time: 1230,
+      time: moment({hour:12, minute:15}),
     },
     {
       id: "3",
       name: "Meal",
       description: "Lunch/Dinner",
-      time: 1650,
+      time: moment({hour:16, minute:30}),
     },
     {
       id: "4",
       name: "Complete 1 Chapter",
       description: "1 Chapter of learning",
-      time: 2000,
+      time: moment({hour:20, minute:0}),
     },
   ],
   count: 4,

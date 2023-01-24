@@ -3,9 +3,10 @@ import Clock from "react-live-clock";
 import CurrentTask from "./CurrentTask";
 import classes from "./TimerDisplay.module.css";
 import CartContext from "../../store/cart-context";
+import moment from "moment";
 
 function TimerDisplay(props) {
-  const [dateState, setDateState] = useState(new Date());
+  const [dateState, setDateState] = useState(moment());
   const [taskDisplayState, setTaskDisplayState] = useState("no task");
   const [isAnimating, setIsAnimating] = useState(false);
   const context = useContext(CartContext);
@@ -19,10 +20,10 @@ function TimerDisplay(props) {
   // constant time refresh
   useEffect(() => {
     const timer = setTimeout(() => {
-      setDateState(new Date());
+      setDateState(moment());
     }, 5000);
-    localStorage.setItem("cartDate", JSON.stringify(dateState.getDay()));
-    console.log(`minutes: ${dateState.getMinutes()}`);
+    localStorage.setItem("cartDate", JSON.stringify(moment(dateState).format("D")));
+    console.log(`minutes: ${moment(dateState).format("m")}`);
     return () => {
       clearTimeout(timer);
     };
@@ -32,7 +33,11 @@ function TimerDisplay(props) {
   useEffect(() => {
     const validTask = context.items.find((task) => {
       if (task.complete !== true) {
-        if ((task.time / 100) << 0 < dateState.getHours()) {
+        if (parseInt((moment(task.time).format("Hmm"))) >= parseInt((moment(dateState).format("Hmm")))) {
+          return true;
+        }
+        return false;
+        /*if ((task.time / 100) << 0 < dateState.getHours()) {
           return false;
         }
         if ((task.time / 100) << 0 === dateState.getHours()) {
@@ -42,6 +47,7 @@ function TimerDisplay(props) {
           return false;
         }
         return true;
+        */
       } else {
         return false;
       }
@@ -61,12 +67,12 @@ function TimerDisplay(props) {
   }, [dateState, context.items]);
 
   //clear cart on next day
-  useEffect(() => {
+  /*useEffect(() => {
     if (localStorage.getItem("cartDate") !== JSON.stringify(dateState.getDay())){
       context.clearCart();
     }
   }, [dateState, context]);
-
+  */
 
   function completeTaskHandler() {
     if (isAnimating === true) {
@@ -85,11 +91,7 @@ function TimerDisplay(props) {
   return (
     <div className={classes.clock}>
       <div>
-        {dateState.toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })}
+        {moment(dateState).format("MMMM D, YYYY")}
       </div>
       <Clock
         format={"hh:mm:ss A"}
